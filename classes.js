@@ -720,4 +720,409 @@ class User1 {
 
 
     const user111 = new User1("Marina", "123");    //in the console =>  Password must be at least 6 characters
+
     
+    // Create Rectangle class.
+
+// Properties:
+// - width
+// - height
+
+// Methods:
+// - getArea()
+// - getPerimeter()
+
+class Rectangle1 {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+  getArea() {
+    return this.width * this.height;
+  }
+  getPerimeter() {
+    return 2 * (this.width + this.height);
+  }
+}
+
+// Create Employee class.
+
+// Properties:
+// - name
+// - salary
+
+// Method:
+// - work()
+
+// Create Manager extending Employee.
+
+// Add:
+// - department
+// - manage()
+
+class Employee {
+  static employeesCount = 0;
+  constructor(name, salary) {
+    this.name = name;
+    this.salary = salary;
+
+    this.constructor.employeesCount += 1;
+  }
+  work() {
+    console.log('Working full-time')
+  }
+  showEmployeesCount() {
+    return this.employeesCount;
+  }
+}
+
+class Manager extends Employee {
+ constructor(name, salary, department) {
+  super(name, salary);
+
+  this.department = department;
+ }
+ manage() {
+  console.log('Managing the sales department');
+ }
+}
+
+
+// Create ShoppingCart class.
+
+// Methods:
+// - addItem(product)
+// - removeItem(title)
+// - getTotalPrice()
+
+// Product object:
+// {
+//   title,
+//   price
+// }
+
+class ShoppingCart1 {
+  constructor() {
+    this.products = [];
+  }
+  addItem(product) {
+    this.products.push(product);
+  }
+  removeItem(title) {
+    this.products = this.products.filter(product => product.title !== title);
+  }
+  getTotalPrice() {
+    return this.products.reduce((total, product) => {
+      total += product.price;
+      return total;
+    }, 0)
+  }
+}
+
+// Create Task class.
+
+// Properties:
+// - title
+// - completed
+
+// Method:
+// - toggleComplete()
+
+class Task1 {
+  constructor(title, completed) {
+    this.title = title;
+    this.completed = completed;
+  }
+  toggleComplete() {
+    if(this.completed === false) {
+      this.completed = true;
+    } else {
+      this.completed = false;
+    }
+  }
+}
+
+// Create User class.
+
+// Track how many users were created.
+
+// Add:
+// - static count
+// - static showCount()
+
+class User5 {
+  static count = 0;
+
+  constructor(name) {
+    this.name = name;
+
+    this.constructor.count += 1;
+  }
+  static showCount() {
+    return this.count;
+  }
+}
+
+new User5("Marina");
+new User5("Anna");
+
+console.log(User5.showCount());
+
+// Create parent Animal.
+
+// Method:
+// - speak()
+
+// Create:
+// - Dog
+// - Cat
+
+// Override speak().
+
+// dog.speak(); // Woof
+// cat.speak(); // Meow
+
+class Animal {
+  speak() {
+    console.log('Pop pop pop');
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log('Woof');
+  }
+}
+
+class Cat extends Animal {
+  speak() {
+    console.log('Meow')
+  }
+}
+
+// Properties:
+// - brand
+// - speed
+
+// Methods:
+// - accelerate()
+// - brake()
+
+// Speed cannot go below 0.
+
+class Car {
+  constructor(brand, speed) {
+    this.brand = brand;
+    this.speed = speed;
+  }
+  accelerate(miles) {
+    const newSpeed = this.speed + miles;
+    if(newSpeed < 0) {
+      console.log('Speed cannot go below 0');
+      return;
+    }
+    this.speed = newSpeed;
+
+  }
+  brake() {
+    this.speed = 0;
+  }
+}
+
+// Add:
+
+// static employees count
+// raiseSalary(percent)
+// override work()
+
+// Tests:
+
+// inheritance
+// static
+// overriding
+
+// Add:
+
+// transfer money
+// transaction history
+// private balance
+
+// VERY realistic interview practice.
+
+// Create Queue class.
+
+// Methods:
+// - enqueue(item)
+// - dequeue()
+// - peek()
+
+// Queue works FIFO:
+// First In → First Out
+
+// queue.enqueue(1);
+// queue.enqueue(2);
+
+// queue.dequeue(); // 1
+
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+  enqueue(item) {
+    this.items.push(item);
+  }
+  dequeue() {
+     return this.items.shift();
+  }
+  peek() {
+    return this.items[0]
+  }
+}
+
+// class BankAccount {
+//   #balance;
+//   #transactions = [];
+
+//   constructor(owner, balance = 0) {
+//     this.owner = owner;
+//     this.#balance = balance;
+//   }
+
+//   get balance() {
+//     return this.#balance;
+//   }
+
+//   get transactions() {
+//     return this.#transactions;
+//   }
+
+//   deposit(amount) {
+//     if (amount <= 0) return;
+
+//     this.#balance += amount;
+
+//     this.#transactions.push({
+//       type: "deposit",
+//       amount: amount,
+//       date: new Date()
+//     });
+//   }
+
+//   withdraw(amount) {
+//     if (amount <= 0) return;
+//     if (amount > this.#balance) return;
+
+//     this.#balance -= amount;
+
+//     this.#transactions.push({
+//       type: "withdraw",
+//       amount: amount,
+//       date: new Date()
+//     });
+//   }
+// }
+
+
+class BankAccount1 {
+  #balance;
+  #transactions = 0;
+
+  constructor(owner, balance = 0) {
+    this.owner = owner;
+    this.#balance = balance;
+  }
+  showBalance() {
+    return this.#balance;
+  }
+  getTransactions() {
+    return this.#transactions;
+  }
+  deposit(amount) {
+    this.#balance += amount;
+
+    this.#transactions.push({
+      type: 'deposit',
+      amount,
+      date: new Date(),
+    })
+  }
+  withdraw(amount) {
+    if(amount > this.#balance) {
+      console.log('Insufficient funds');
+      return;
+    }
+    this.#balance -= amount;
+
+    this.#transactions.push({
+      type: 'withdrawal',
+      amount,
+      date: new Date(),
+    })
+  }
+}
+
+// 17. Movie Collection
+// Movie:
+// - title
+// - rating
+// - year
+
+// MovieCollection methods:
+// - addMovie()
+// - getTopRated()
+// - getAverageRating()
+
+// Tests:
+
+// reduce
+// sorting
+// filtering
+
+// 16. Calculator With Chaining
+
+// VERY common mid-level interview task.
+
+// calculator
+//   .add(5)
+//   .multiply(2)
+//   .subtract(1);
+
+// Hint:
+// Methods should return:
+
+// return this;
+
+// Tests:
+
+// method chaining
+// this
+
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+
+  add(number) {
+    this.result += number;
+    return this;
+  }
+
+  multiply(number) {
+    this.result *= number;
+    return this;
+  }
+
+  subtract(number) {
+    this.result -= number;
+    return this;
+  }
+}
+
+const calc = new Calculator();
+
+calc
+  .add(5)
+  .multiply(2)
+  .subtract(1);
+
+console.log(calc.result);
